@@ -18,6 +18,10 @@ a:focus-visible {
 	outline: none !important;
 }
 
+.telegram-icon {
+	font-size: 18px !important;
+}
+
 
 @keyframes seq-preloader {
   50% {
