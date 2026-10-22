@@ -1,0 +1,72 @@
+nav{
+  left: 0;
+  right: unset;
+}
+
+
+.slides .slide .content{
+  float: right;
+}
+
+.first-content .container-fluid .col-md-9 {
+  float: right;
+  text-align: left;
+
+}
+.lightboxgallery-gallery-item a{
+  float:left;
+}
+nav a:not(.icon) i {
+  margin-right: 9px;
+  margin-left: 0;
+}
+
+.fifth-content .container-fluid {
+  flex-direction: row-reverse;
+  display: flex;
+}
+
+.fifth-content input ,.fifth-content textarea{
+  text-align: left;
+}
+.social-icons .info div *{
+  text-align: left;
+float: left;}
+.social-icons .info i, .social-net i {
+  margin-right: 15px;
+  margin-left: 0;
+}
+.social-icons .info p {
+  width: 85%;
+  text-align: left;
+}
+
+.social-net {
+  flex-direction: row-reverse;
+}
+.second-content .left-content {
+  text-align: left;
+}
+.seofy_module_time_line_vertical .time_line-item.item_show .time_line-content, .seofy_module_time_line_vertical .time_line-item.item_show:nth-child(even) .time_line-content {
+  text-align: left;
+}
+
+.lightboxgallery-gallery-item .light {
+
+  text-align: left;
+}
+.lightboxgallery-gallery-item a:hover {
+  color: #717fe0;
+  margin-left: 5px;
+  margin-right: 0;
+}
+.lightboxgallery-gallery-item a i {
+  margin-right: 5px;
+}
+
+.third-content .main-btn a, .third-content .resume-btn a {
+  text-transform: unset; 
+} 
+.first-content p {
+  text-align: left;
+}
