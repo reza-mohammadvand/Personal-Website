@@ -16,6 +16,26 @@ window.onload = function() {
   }
 };
 
+const contactForm = document.getElementById('contact');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const formData = new FormData(contactForm);
+    const name = formData.get('name').trim();
+    const email = formData.get('email').trim();
+    const subject = formData.get('subject').trim();
+    const message = formData.get('message').trim();
+    const isPersian = contactForm.dataset.language === 'fa';
+    const body = isPersian
+      ? `نام: ${name}\nایمیل: ${email}\n\n${message}`
+      : `Name: ${name}\nEmail: ${email}\n\n${message}`;
+
+    window.location.href = `mailto:reza_mohammadvand@alumni.iust.ac.ir?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+}
+
 
 
 
