@@ -22,7 +22,14 @@ a:focus-visible {
 	font-size: 18px !important;
 }
 
+.journey-heading-fa{
+  margin-left: auto;
+    direction: rtl;
+}
 
+.about-intro p, .about-detail-row-fa p{
+      direction: rtl;
+}
 @keyframes seq-preloader {
   50% {
     opacity: 1;

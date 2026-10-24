@@ -1,15 +1,15 @@
 // Add an event listener to the toggle switch
 document.getElementById('langToggle').addEventListener('change', function() {
   if (this.checked) {
-    window.location.href = 'Fa.html';
+    window.location.href = 'Fa.html' + window.location.hash;
   } else {
-    window.location.href = 'index.html';
+    window.location.href = 'index.html' + window.location.hash;
   }
 });
 
 // Check the state of the toggle switch when the page loads
 window.onload = function() {
-  if (window.location.href.endsWith('Fa.html')) {
+  if (window.location.pathname.toLowerCase().endsWith('/fa.html')) {
     document.getElementById('langToggle').checked = true;
   } else {
     document.getElementById('langToggle').checked = false;
@@ -125,12 +125,13 @@ jQuery(document).ready(function($) {
             e.preventDefault();
         }
         
-        $('nav a:not(.icon), .main-btn a').click(function(e) {
+        $('nav a:not(.icon), .main-btn a, .journey-next').click(function(e) {
             // When link clicked, find slide it points to
             var newslide = parseInt($(this).attr('href')[1]);
             // find how far it is from current slide
             var diff = newslide - currSlide - 1;
             showSlide(diff); // show that slide
+            window.history.replaceState(null, '', '#' + newslide);
             e.preventDefault();
         });
 
@@ -146,12 +147,26 @@ jQuery(document).ready(function($) {
         
         // cache
         var $body = $('body');
-        var currSlide = 0;
         var $slides = $('.slides');
         var $slide = $('.slide');
+        var requestedSlide = parseInt(window.location.hash.replace('#', ''), 10);
+        var currSlide = Number.isInteger(requestedSlide) && requestedSlide >= 1 && requestedSlide <= $slide.length
+          ? requestedSlide - 1
+          : 0;
       
-        // give active class to first link
-        $($('nav a:not(.icon)')[0]).addClass('active');
+        // Position the requested slide and mark its navigation item as active.
+        $slides.addClass('is-positioning');
+        $slides.css('transform', 'translateX(-' + (window.innerWidth * currSlide) + 'px)');
+        // A numeric hash points to an off-screen slide element. Keep the document itself
+        // anchored at the origin; horizontal movement is handled only by the slider.
+        window.scrollTo(0, 0);
+        window.requestAnimationFrame(function() {
+          window.scrollTo(0, 0);
+          window.requestAnimationFrame(function() {
+            $slides.removeClass('is-positioning');
+          });
+        });
+        $($('nav a:not(.icon)')[currSlide]).addClass('active');
         
         // add event listener for mousescroll
         $body.bind('false', mouseEvent);
